@@ -1,3 +1,5 @@
+use std::io::{BufRead, BufReader};
+
 use crate::parser::{eat, eat_while, eat_whitespace};
 
 #[derive(Debug)]
@@ -194,6 +196,16 @@ pub fn parse_game(game: String) -> GameInfo {
         total_game_set.green,
         total_game_set.blue,
     )
+}
+
+pub fn parse_games<F: std::io::Read>(f: F) -> Vec<GameInfo> {
+    let reader = BufReader::new(f);
+    reader
+        .lines()
+        .take_while(|item| item.is_ok())
+        .map(|item| item.unwrap())
+        .map(parse_game)
+        .collect()
 }
 
 #[cfg(test)]

@@ -4,4 +4,4 @@ mod consts;
 mod game;
 mod parser;
 pub mod part1;
-// pub mod part2;
+pub mod part2;

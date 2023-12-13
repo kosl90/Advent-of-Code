@@ -1,9 +1,8 @@
-use d02::part1::solve;
+use d02::part2::solve;
 use utils::read_file_in_examples;
 
 #[test]
-fn it_works() {
+fn test_p2() {
     let f = read_file_in_examples(env!("CARGO_MANIFEST_DIR"), "p1.txt").unwrap();
-    let result = solve(f);
-    assert_eq!(result, 8);
+    assert_eq!(solve(f), 2286);
 }
